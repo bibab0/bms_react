@@ -8,10 +8,10 @@ class LayoutIndex extends Component {
     render() {
         return (
             <Layout>
-                <Sider className="siderBar">Sider</Sider>
+                <Sider>Sider</Sider>
                 <Layout>
                     <Header>Header</Header>
-                    <Content className="contBox">
+                    <Content>
                         <div>www</div>
                         <div>www</div>
                         <div>www</div>
