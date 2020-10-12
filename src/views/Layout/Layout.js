@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
+import SiderBar from './SiderBar';
 import { Layout } from 'antd';
-const { Header, Sider, Content } = Layout;
+const { Header, Content } = Layout;
 class LayoutIndex extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
     render() {
         return (
             <Layout>
-                <Sider>Sider</Sider>
+                <SiderBar />
                 <Layout>
                     <Header>Header</Header>
                     <Content>

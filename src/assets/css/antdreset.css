@@ -1,11 +1,19 @@
 .ant-layout-sider {
   height: 100vh;
+  overflow: auto;
 }
+/*滚动轴*/
+.ant-layout-sider::-webkit-scrollbar {
+  width: 0px;
+  height: 2px;
+}
+
 .ant-layout-content {
   padding: 10px 20px;
   height: calc(100vh - 50px);
   overflow: auto;
 }
+
 .ant-layout-header {
   height: 50px;
   line-height: 50px;
