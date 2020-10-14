@@ -1,6 +1,11 @@
 .headerBox {
   display: flex;
   flex-direction: row-reverse;
+  height: 50px;
+  line-height: 50px;
+  background: #ffffff;
+  border-bottom: 1px solid #f6f6f6;
+  padding: 0 20px;
 }
 .iconBox {
   width: 85px;

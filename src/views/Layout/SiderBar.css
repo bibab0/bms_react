@@ -1,0 +1,52 @@
+.menuBox {
+  width: 100%;
+  height: calc(100vh - 100px);
+  overflow: auto;
+}
+.menuBox .ant-menu-submenu-title {
+  width: 48px;
+  padding: 0 16px !important;
+}
+/*滚动轴*/
+.menuBox::-webkit-scrollbar {
+  width: 0px;
+  height: 2px;
+}
+.logoBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  cursor: pointer;
+}
+.logoBox img {
+  width: 32px;
+  height: 32px;
+}
+.logoBox span {
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 18px;
+  margin-left: 15px;
+  animation: fade-in;
+  animation-duration: 1s;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.collapseBox {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding-left: 14px;
+}
+.collapseIcon {
+  font-size: 20px;
+  color: #ffffff;
+}
