@@ -1,7 +1,23 @@
+.ant-menu-root {
+  width: 100%;
+  height: calc(100vh - 100px);
+  overflow: auto;
+}
+.ant-menu-root .ant-menu-submenu-title,
+.ant-menu-root .ant-menu-item {
+  width: 48px;
+  padding: 0 16px !important;
+}
+.ant-menu-root .ant-menu-item-only-child {
+  padding-left: 40px !important;
+}
+/*滚动轴*/
+.ant-menu-root::-webkit-scrollbar {
+  width: 0px;
+  height: 2px;
+}
 .ant-layout-content {
   padding: 10px 20px;
   height: calc(100vh - 50px);
   overflow: auto;
 }
-
-

@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
-import { Layout, Menu } from 'antd';
-import { AppstoreOutlined, MailOutlined, SettingOutlined, MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
+import { BrowserRouter as Router, Link } from "react-router-dom";
+import router from '../../routers/router';
 import './SiderBar.css';
 import reactLogo from '../../assets/images/reactLogo.svg';
+import { Layout, Menu } from 'antd';
+import {
+    AppstoreOutlined,
+    MenuFoldOutlined,
+    MenuUnfoldOutlined
+} from '@ant-design/icons';
 const { SubMenu } = Menu;
 const { Sider } = Layout;
 class SiderBar extends Component {
@@ -24,47 +30,31 @@ class SiderBar extends Component {
                     <img src={reactLogo} alt="logo" />
                     {this.state.collapsed ? '' : <span>BMS-REACT</span>}
                 </div>
-                <Menu
-                    className="menuBox"
-                    onClick={this.handleClick}
-                    mode="inline"
-                    theme="dark"
-                >
-                    <SubMenu
-                        title={
-                            <span>
-                                <MailOutlined />
-                                <span>导航一</span>
-                            </span>
-                        }
-                    >
-                        <Menu.Item>Option 1</Menu.Item>
-                        <Menu.Item>Option 2</Menu.Item>
-                        <Menu.Item>Option 3</Menu.Item>
-                        <Menu.Item>Option 4</Menu.Item>
-                    </SubMenu>
-                    <SubMenu icon={<AppstoreOutlined />} title="导航二">
-                        <Menu.Item>Option 5</Menu.Item>
-                        <Menu.Item>Option 6</Menu.Item>
-                    </SubMenu>
-                    <SubMenu
-                        title={
-                            <span>
-                                <SettingOutlined />
-                                <span>导航三</span>
-                            </span>
-                        }
-                    >
-                        <Menu.Item>Option 9</Menu.Item>
-                        <Menu.Item>Option 10</Menu.Item>
-                        <Menu.Item>Option 11</Menu.Item>
-                        <Menu.Item>Option 12</Menu.Item>
-                    </SubMenu>
-                </Menu>
+                <Router>
+                    <Menu onClick={this.handleClick} mode="inline" theme="dark">
+                        {router.map((route) => {
+                            if (route.routes) {
+                                return (<SubMenu key={route.path} icon={<AppstoreOutlined />} title={route.name}>
+                                    {route.routes.map((childrote) => (
+                                        <Menu.Item key={childrote.path}>
+                                            <Link to={childrote.path}>{childrote.name}</Link>
+                                        </Menu.Item>
+                                    ))}
+                                </SubMenu>)
+                            } else {
+                                return (
+                                    <Menu.Item key={route.path} icon={<AppstoreOutlined />}>
+                                        <Link to={route.path}>{route.name}</Link>
+                                    </Menu.Item>
+                                )
+                            }
+                        })}
+                    </Menu>
+                </Router>
                 <div className="collapseBox" onClick={this.toggleCollapsed}>
                     {this.state.collapsed ? <MenuUnfoldOutlined className="collapseIcon" /> : <MenuFoldOutlined className="collapseIcon" />}
                 </div>
-            </Sider>
+            </Sider >
         );
     }
 }
