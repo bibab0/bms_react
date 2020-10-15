@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import router from '../../routers/router';
 import './SiderBar.css';
 import reactLogo from '../../assets/images/reactLogo.svg';
@@ -30,7 +30,7 @@ class SiderBar extends Component {
                     <img src={reactLogo} alt="logo" />
                     {this.state.collapsed ? '' : <span>BMS-REACT</span>}
                 </div>
-                <Menu onClick={this.handleClick} mode="inline" theme="dark">
+                <Menu onClick={this.handleClick} mode="inline" theme="dark" selectedKeys={[this.props.location.pathname]}>
                     {router.map((route) => {
                         if (route.routes) {
                             return (<SubMenu key={route.path} icon={<AppstoreOutlined />} title={route.name}>
@@ -57,4 +57,4 @@ class SiderBar extends Component {
     }
 }
 
-export default SiderBar;
+export default withRouter(SiderBar);
