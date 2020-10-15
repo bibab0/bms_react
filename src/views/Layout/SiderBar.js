@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import router from '../../routers/router';
 import './SiderBar.css';
 import reactLogo from '../../assets/images/reactLogo.svg';
@@ -30,27 +30,25 @@ class SiderBar extends Component {
                     <img src={reactLogo} alt="logo" />
                     {this.state.collapsed ? '' : <span>BMS-REACT</span>}
                 </div>
-                <Router>
-                    <Menu onClick={this.handleClick} mode="inline" theme="dark">
-                        {router.map((route) => {
-                            if (route.routes) {
-                                return (<SubMenu key={route.path} icon={<AppstoreOutlined />} title={route.name}>
-                                    {route.routes.map((childrote) => (
-                                        <Menu.Item key={childrote.path}>
-                                            <Link to={childrote.path}>{childrote.name}</Link>
-                                        </Menu.Item>
-                                    ))}
-                                </SubMenu>)
-                            } else {
-                                return (
-                                    <Menu.Item key={route.path} icon={<AppstoreOutlined />}>
-                                        <Link to={route.path}>{route.name}</Link>
+                <Menu onClick={this.handleClick} mode="inline" theme="dark">
+                    {router.map((route) => {
+                        if (route.routes) {
+                            return (<SubMenu key={route.path} icon={<AppstoreOutlined />} title={route.name}>
+                                {route.routes.map((childrote) => (
+                                    <Menu.Item key={childrote.path}>
+                                        <Link to={childrote.path}>{childrote.name}</Link>
                                     </Menu.Item>
-                                )
-                            }
-                        })}
-                    </Menu>
-                </Router>
+                                ))}
+                            </SubMenu>)
+                        } else {
+                            return (
+                                <Menu.Item key={route.path} icon={<AppstoreOutlined />}>
+                                    <Link to={route.path}>{route.name}</Link>
+                                </Menu.Item>
+                            )
+                        }
+                    })}
+                </Menu>
                 <div className="collapseBox" onClick={this.toggleCollapsed}>
                     {this.state.collapsed ? <MenuUnfoldOutlined className="collapseIcon" /> : <MenuFoldOutlined className="collapseIcon" />}
                 </div>
