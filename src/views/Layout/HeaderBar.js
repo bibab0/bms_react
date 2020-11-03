@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 import { Layout, Menu, Dropdown, Avatar } from 'antd';
 import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
 import './HeaderBar.css';
@@ -6,7 +7,7 @@ const { Header } = Layout;
 const menu = (
     <Menu>
         <Menu.Item>
-            <a target="_blank" rel="noopener noreferrer" href="http://www.alipay.com/"><LogoutOutlined /><span className="logout">退出登录</span></a>
+            <Link to='/login'><LogoutOutlined /><span className="logout">退出登录</span></Link>
         </Menu.Item>
     </Menu>
 );
