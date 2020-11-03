@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { lazy } from 'react';
 const router = [
     {
         path: '/',
         name: '首页',
         exact: true,
-        component: () => <h2>Home</h2>
+        component: lazy(() => import('../views/Home/Home'))
     },
     {
         path: '/nav1',
