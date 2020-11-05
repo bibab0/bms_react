@@ -30,7 +30,7 @@ const router = [
     {
         path: '/role',
         name: '角色',
-        component: () => <h2>Shoelaces</h2>
+        component: lazy(() => import('../views/Role/Role'))
     }
 ];
 export default router;
