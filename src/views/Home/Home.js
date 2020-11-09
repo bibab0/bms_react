@@ -1,28 +1,20 @@
 import React, { Component } from 'react';
-import store from '../../store/Store';
+import { connect } from 'react-redux';
 import * as Action from '../../store/Action';
-export default class Home extends Component {
-    state = {
-        count: store.getState()
-    }
-    onIncrement = () => {
-        store.dispatch(Action.increment());
-    };
-    onDecrement = () => {
-        store.dispatch(Action.decrement());
-    };
+class Home extends Component {
     render() {
-        store.subscribe(() => {
-            this.setState({
-                count: store.getState()
-            })
-        })
+        const { increment, decrement } = this.props;
         return (
             <div>
-                <h1>{store.getState()}</h1>
-                <button onClick={this.onIncrement}>增加</button>
-                <button onClick={this.onDecrement}>减少</button>
+                <h1>{this.props.text}{this.props.count}</h1>
+                <button onClick={() => increment()}>增加</button>
+                <button onClick={() => decrement()}>减少</button>
             </div>
         )
     }
 }
+const mapStateToProps = state => ({
+    count: state.count,
+    text: state.hello
+})
+export default connect(mapStateToProps, Action)(Home);
